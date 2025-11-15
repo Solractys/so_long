@@ -13,3 +13,13 @@ typedef struct s_map
     int walls;
     int spaces;
 } t_map;
+
+#ifndef MAP_H
+#define MAP_H
+
+
+t_map    *read_map(char *filename);
+int     count_lines(char *filename);
+int     count_columns(char *filename);
+
+#endif

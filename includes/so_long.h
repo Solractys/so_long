@@ -1,3 +1,7 @@
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+
 typedef struct s_game
 {
     void *mlx;
@@ -12,4 +16,3 @@ typedef struct s_game
     void *img_8;
     void *img_9;
 } t_game;
-

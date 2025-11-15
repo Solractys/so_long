@@ -1,20 +1,34 @@
-PROG = so_long
-SRCS = src/main.c
-OBJS = $(SRCS:.c=.o)
+NAME        = so_long
 
-all: $(PROG)
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror
+CFLAGS     += -Iincludes -Iminilibx -Isrc/map/gnl -Iincludes/ft_printf
 
-%.o: %.c
-	gcc -Wall -Wextra -Werror -I./minilibx -c $< -o $@
+SRCS        = $(shell find src -name "*.c")
+SRCS       += $(shell find includes/ft_printf -name "*.c")
 
-$(PROG): $(OBJS)
-	gcc $(OBJS) -L/usr/lib -L./minilibx -I./minilibx -lmlx -lXext -lX11 -lm -lz -o $(PROG)
+OBJS        = $(SRCS:.c=.o)
+
+MLX_DIR     = minilibx
+MLX_LIB     = $(MLX_DIR)/libmlx_Linux.a
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
+
+all: $(MLX_LIB) $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	@echo "Compilation complete!"
+
+$(MLX_LIB):
+	@echo "Building MiniLibX..."
+	@make -C $(MLX_DIR)
 
 clean:
 	rm -f $(OBJS)
+	@make -C $(MLX_DIR) clean
 
 fclean: clean
-	rm -f $(PROG)
+	rm -f $(NAME)
 
 re: fclean all
 
