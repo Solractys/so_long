@@ -21,22 +21,32 @@ Sobre a mecanica do jogo:
         As teclas de movimento serão WASD, o player não deve se mover através das paredes, cada movimento deve ser contabilizado
         e mostrado na tela. O objetivo principal é coletar todos os coletáveis e sair do jogo.
 
-Estratégias de desenvolvimento:
+Progresso:
 
-Primeira Parte: Análise e Validação do Mapa:
+[ ] Validar extensão .ber
+[ ] Verificar formato retangular
+[ ] Validar caracteres permitidos
+[ ] Contar P / E / C
+[ ] Verificar paredes ao redor
+[ ] Flood fill para checar caminhos
 
-    1.1. Verificação do Arquivo e Extensão:
-        - O programa deve aceitar um único argumento.
-        - Validar se o argumento possui a extensão ".ber".
-    1.2. Leitura do Mapa:
-        - Abrir e ler o arquivo .ber.
-        - Armazenar o conteúdo em uma matriz 2D (ex: char **map).
-    1.3. Validação de Formato e Paredes:
-        - Checar se o mapa é retangular.
-        - Verificar se o mapa é completamente cercado por paredes ('1').
-    1.4. Validação de Conteúdo:
-        - Procurar por caracteres inválidos (diferentes de '0', '1', 'C', 'P', 'E').
-        - Garantir que há exatamente um 'P', um 'E' e pelo menos um 'C'.
-    1.5. Algoritmo de Caminho Válido:
-        - Implementar um algoritmo de pathfinding (como flood fill, BFS ou DFS) a partir da posição 'P'.
-        - O algoritmo deve confirmar que é possível alcançar todos os coletáveis ('C') e a saída ('E'). Se algum for inalcançável, o mapa é inválido.
+[ ] Criar t_game
+[ ] Guardar posição inicial do player
+
+[ ] Iniciar MiniLibX
+[ ] Criar janela
+[ ] Carregar sprites
+[ ] Renderizar mapa completo
+
+[ ] Implementar hook de teclado
+[ ] Função de movimento do player
+[ ] Atualizar mapa após cada movimento
+[ ] Contador de movimentos
+
+[ ] Detectar vitória
+[ ] Hook para ESC
+[ ] Função de cleanup geral
+
+[ ] Função de erro
+[ ] Norminette
+[ ] Testar mapas válidos e inválidos
