@@ -1,4 +1,6 @@
 #include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
 
 typedef struct s_map
 {
@@ -21,5 +23,12 @@ typedef struct s_map
 t_map    *read_map(char *filename);
 int     count_lines(char *filename);
 int     count_columns(char *filename);
+void    free_map(t_map *map);
+int     validate_map(t_map *map);
+int     validate_map_characters(t_map *map);
+int     validate_line_lengths(t_map *map);
+int     validate_map_walls(t_map *map);
+int     put_on_map(char **map, char *filename, int height);
+void    count_info_map(t_map *map);
 
 #endif

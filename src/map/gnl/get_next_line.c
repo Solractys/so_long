@@ -95,21 +95,21 @@ char	*extract_line(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[1024];
 	char		*line;
 	char		*buffer;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	stash = read_to_stash(fd, stash, buffer);
+	stash[fd] = read_to_stash(fd, stash[fd], buffer);
 	free(buffer);
-	if (!stash)
+	if (!stash[fd])
 		return (NULL);
-	line = extract_line(stash);
+	line = extract_line(stash[fd]);
 	if (line != NULL)
-		stash = update_stash(stash, gnl_strlen(line));
+		stash[fd] = update_stash(stash[fd], gnl_strlen(line));
 	return (line);
 }

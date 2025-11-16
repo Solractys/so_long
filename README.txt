@@ -23,11 +23,11 @@ Sobre a mecanica do jogo:
 
 Progresso:
 
-[ ] Validar extensão .ber
-[ ] Verificar formato retangular
-[ ] Validar caracteres permitidos
-[ ] Contar P / E / C
-[ ] Verificar paredes ao redor
+[X] Validar extensão .ber 
+[X] Verificar formato retangular
+[X] Validar caracteres permitidos
+[X] Contar P / E / C
+[X] Verificar paredes ao redor 
 [ ] Flood fill para checar caminhos
 
 [ ] Criar t_game
