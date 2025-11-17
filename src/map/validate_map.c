@@ -101,7 +101,12 @@ int validate_map(t_map *map)
             if (map->map[y][map->width - 1] != '1')
                 ft_printf("Right border at y=%d is '%c'\n", y, map->map[y][map->width - 1]);
         }
-        return (0);
+       return (0);
     }
+	if (!is_valid_path(map))
+	{
+		ft_printf("Validation failed: invalid path\n");
+		return (0);
+	}
     return (1);
 }
