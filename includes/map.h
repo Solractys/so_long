@@ -1,3 +1,6 @@
+#ifndef MAP_H
+#define MAP_H
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -16,8 +19,6 @@ typedef struct s_map
     int spaces;
 } t_map;
 
-#ifndef MAP_H
-#define MAP_H
 
 
 t_map    *read_map(char *filename);

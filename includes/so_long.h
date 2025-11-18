@@ -1,6 +1,10 @@
+#ifndef SO_LONG_H
+#define SO_LONG_H
+
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "mlx.h"
 #include "map.h"
 
 typedef struct s_game
@@ -14,3 +18,5 @@ typedef struct s_game
     void *exit_img;
     void *collectible_img;
 } t_game;
+
+#endif

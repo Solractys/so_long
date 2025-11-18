@@ -13,6 +13,8 @@
 #include "../minilibx/mlx.h"
 #include "../includes/ft_printf/ft_printf.h"
 #include "../includes/map.h"
+#include "../includes/so_long.h"
+#include "../includes/render.h"
 
 int check_file_extension_ber(const char *filename)
 {

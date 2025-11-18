@@ -1,4 +1,5 @@
 #include "../../includes/so_long.h"
+#include "../../includes/render.h"
 
 void render_map(t_game *game)
 {
@@ -6,6 +7,7 @@ void render_map(t_game *game)
     int y;
 
     y = 0;
+    load_images(game);
     while (y < game->map->height * 32)
     {
         x = 0;
