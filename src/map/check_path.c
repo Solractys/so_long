@@ -1,6 +1,17 @@
 #include "../includes/map.h"
 #include "../includes/ft_printf/ft_printf.h"
 
+void	show_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		ft_printf("%s\n", map->map[i]);
+		i++;
+	}
+}
 void	dfs(t_map *map, int x, int y)
 {
 	if (x < 0 || x >= map->height || y < 0 || y >= map->width)
@@ -60,6 +71,7 @@ int is_valid_path(t_map *map)
 	colectibles_found = map_copy->collectibles;
 	if (map_copy->map[map->exit_y][map->exit_x] == 'V')
 		exit_found = 1;
+	show_map(map_copy);
 	free_map(map_copy);
 	if (colectibles_found != 0 || exit_found == 0)
 		return (0);
