@@ -8,6 +8,8 @@ int is_move_valid(t_map *map, int x, int y)
     char tile = map->map[y][x];
     if (tile == '1')
         return (0);
+    if (tile == 'E' && map->collectibles > 0)
+        return (0);
     if (tile == 'E' && map->collectibles == 0)
         return (2);
     return (1);
