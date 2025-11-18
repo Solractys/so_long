@@ -31,36 +31,31 @@ int check_file_extension_ber(const char *filename)
 
 int main(int argc, char **argv)
 {
+	t_game *game;
+	t_map *map;
 	if (argc != 2)
 	{
 		ft_printf("Usage: %s <map_file.ber>\n", argv[0]);
 		return (1);
 	}
-	void *mlx;
-	void *win;
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 100, 100, "Hello, World!");
 	if (!check_file_extension_ber(argv[1]))
 	{
 		ft_printf("Error: Invalid file extension. Expected .ber\n");
 		return (1);
 	}
-	t_map *map;
+	game = malloc(sizeof(t_game));
 	map = read_map(argv[1]);
 	if (!validate_map(map))
 	{
 		ft_printf("Error: Invalid map structure.\n");
 		return (1);
 	}
-	ft_printf("Map Width: %d, Height: %d\n", map->width, map->height);
-	ft_printf("Player Position: (%d, %d)\n", map->player_x, map->player_y);
-	ft_printf("Exit Position: (%d, %d)\n", map->exit_x, map->exit_y);
-	ft_printf("Collectibles: %d\n", map->collectibles);
+	game->map = map;
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, map->width * 32, map->height * 32, "So Long Game");
+	render_map(game);
 	free_map(map);
-	mlx_loop(mlx);
-	mlx_destroy_window(mlx, win);
-	mlx_destroy_display(mlx);
-	free(mlx);
+	mlx_loop(game->mlx);
+	free(game->mlx);
 	return (0);
 }

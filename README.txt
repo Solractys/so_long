@@ -31,10 +31,10 @@ Progresso:
 [X] Flood fill para checar caminhos
 
 [ ] Criar t_game
-[ ] Guardar posição inicial do player
+[X] Guardar posição inicial do player
 
-[ ] Iniciar MiniLibX
-[ ] Criar janela
+[X] Iniciar MiniLibX
+[X] Criar janela
 [ ] Carregar sprites
 [ ] Renderizar mapa completo
 
