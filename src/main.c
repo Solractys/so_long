@@ -15,6 +15,7 @@
 #include "../includes/map.h"
 #include "../includes/so_long.h"
 #include "../includes/render.h"
+#include "../includes/game.h"
 
 int check_file_extension_ber(const char *filename)
 {
@@ -33,8 +34,8 @@ int check_file_extension_ber(const char *filename)
 
 int main(int argc, char **argv)
 {
-	t_game *game;
 	t_map *map;
+
 	if (argc != 2)
 	{
 		ft_printf("Usage: %s <map_file.ber>\n", argv[0]);
@@ -45,19 +46,17 @@ int main(int argc, char **argv)
 		ft_printf("Error: Invalid file extension. Expected .ber\n");
 		return (1);
 	}
-	game = malloc(sizeof(t_game));
+	t_game *game;
+	
+	map = malloc(sizeof(t_map));
 	map = read_map(argv[1]);
 	if (!validate_map(map))
 	{
 		ft_printf("Error: Invalid map structure.\n");
 		return (1);
 	}
-	game->map = map;
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, map->width * 32, map->height * 32, "So Long Game");
-	render_map(game);
+	game = malloc(sizeof(t_game));
+	game_init(game, map);
 	free_map(map);
-	mlx_loop(game->mlx);
-	free(game->mlx);
 	return (0);
 }

@@ -17,6 +17,7 @@ typedef struct s_game
     void *player_img;
     void *exit_img;
     void *collectible_img;
+    int moves;
 } t_game;
 
 #endif
