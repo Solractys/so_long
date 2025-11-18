@@ -30,22 +30,22 @@ Progresso:
 [X] Verificar paredes ao redor
 [X] Flood fill para checar caminhos
 
-[ ] Criar t_game
+[X] Criar t_game
 [X] Guardar posição inicial do player
 
 [X] Iniciar MiniLibX
 [X] Criar janela
-[ ] Carregar sprites
-[ ] Renderizar mapa completo
+[X] Carregar sprites
+[X] Renderizar mapa completo
 
-[ ] Implementar hook de teclado
-[ ] Função de movimento do player
-[ ] Atualizar mapa após cada movimento
-[ ] Contador de movimentos
+[X] Implementar hook de teclado
+[X] Função de movimento do player
+[X] Atualizar mapa após cada movimento
+[X] Contador de movimentos
 
-[ ] Detectar vitória
-[ ] Hook para ESC
-[ ] Função de cleanup geral
+[X] Detectar vitória
+[X] Hook para ESC
+[X] Função de cleanup geral
 
 [ ] Função de erro
 [ ] Norminette
