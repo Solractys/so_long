@@ -18,6 +18,8 @@ void	render_map(t_game *game)
 	int	x;
 	int	y;
 
+	if (!game || !game->map || !game->map->map || !game->win)
+		return ;
 	y = 0;
 	while (y < game->map->height * 32)
 	{

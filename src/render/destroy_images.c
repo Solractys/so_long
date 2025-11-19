@@ -16,14 +16,20 @@
 static void	destroy_player_images(t_game *game)
 {
 	int	i;
+	int	j;
 
-	if (game->player_img[0])
+	if (game->player_img[0][0])
 	{
 		i = 0;
 		while (i < 4)
 		{
-			if (game->player_img[i])
-				mlx_destroy_image(game->mlx, game->player_img[i]);
+			j = 0;
+			while (j < 6)
+			{
+				if (game->player_img[i][j])
+					mlx_destroy_image(game->mlx, game->player_img[i][j]);
+				j++;
+			}
 			i++;
 		}
 	}
@@ -45,16 +51,48 @@ static void	destroy_exit_images(t_game *game)
 	}
 }
 
+static void	destroy_floor_images(t_game *game)
+{
+	int	i;
+
+	if (game->floor_img[0])
+	{
+		i = 0;
+		while (i < 6)
+		{
+			if (game->floor_img[i])
+				mlx_destroy_image(game->mlx, game->floor_img[i]);
+			i++;
+		}
+	}
+}
+
+static void	destroy_collectible_images(t_game *game)
+{
+	int	i;
+
+	if (game->collectible_img[0])
+	{
+		i = 0;
+		while (i < 6)
+		{
+			if (game->collectible_img[i])
+				mlx_destroy_image(game->mlx, game->collectible_img[i]);
+			i++;
+		}
+	}
+}
+
 void	destroy_images(t_game *game)
 {
 	if (game->wall_img)
 		mlx_destroy_image(game->mlx, game->wall_img);
-	if (game->floor_img)
-		mlx_destroy_image(game->mlx, game->floor_img);
-	if (game->player_img[0])
+	if (game->floor_img[0])
+		destroy_floor_images(game);
+	if (game->player_img[0][0])
 		destroy_player_images(game);
 	if (game->exit_img[0])
 		destroy_exit_images(game);
-	if (game->collectible_img)
-		mlx_destroy_image(game->mlx, game->collectible_img);
+	if (game->collectible_img[0])
+		destroy_collectible_images(game);
 }
