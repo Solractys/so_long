@@ -22,7 +22,13 @@ void	game_init(t_game *game, t_map *map)
 	game->win = mlx_new_window(game->mlx, map->width * 32, map->height * 32,
 			"The Legend of Zelda: So Long But So Nice");
 	game->moves = 0;
+	game->player_direction = 1;
+	game->player_img[0] = NULL;
+	game->player_img[1] = NULL;
+	game->player_img[2] = NULL;
+	game->player_img[3] = NULL;
 	load_images(game);
+	load_player_images(game);
 	render_map(game);
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);

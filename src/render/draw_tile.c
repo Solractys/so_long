@@ -19,9 +19,15 @@ void	draw_tile(t_game *game, void *win, int x, int y)
 	else if (game->map->map[y / 32][x / 32] == '0')
 		mlx_put_image_to_window(game->mlx, win, game->floor_img, x, y);
 	else if (game->map->map[y / 32][x / 32] == 'P')
-		mlx_put_image_to_window(game->mlx, win, game->player_img, x, y);
+	{
+		mlx_put_image_to_window(game->mlx, win,
+			game->player_img[game->player_direction], x, y);
+	}
 	else if (game->map->map[y / 32][x / 32] == 'E')
 		mlx_put_image_to_window(game->mlx, win, game->exit_img, x, y);
 	else if (game->map->map[y / 32][x / 32] == 'C')
-		mlx_put_image_to_window(game->mlx, win, game->collectible_img, x, y);
+	{
+		mlx_put_image_to_window(game->mlx, win,
+			game->collectible_img, x, y);
+	}
 }

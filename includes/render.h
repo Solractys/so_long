@@ -20,5 +20,6 @@ void	render_map(t_game *game);
 void	load_images(t_game *game);
 void	draw_tile(t_game *game, void *win, int x, int y);
 void	destroy_images(t_game *game);
+void    load_player_images(t_game *game);
 
 #endif

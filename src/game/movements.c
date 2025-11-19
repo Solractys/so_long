@@ -64,13 +64,25 @@ void	move_player(t_game *game, int dx, int dy)
 int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
+	{
+		game->player_direction = 0;
 		move_player(game, 0, -1);
-	else if (keycode == KEY_A)
-		move_player(game, -1, 0);
+	}
 	else if (keycode == KEY_S)
+	{
+		game->player_direction = 1;
 		move_player(game, 0, 1);
+	}
+	else if (keycode == KEY_A)
+	{
+		game->player_direction = 2;
+		move_player(game, -1, 0);
+	}
 	else if (keycode == KEY_D)
+	{
+		game->player_direction = 3;
 		move_player(game, 1, 0);
+	}
 	else if (keycode == KEY_ESC)
 		exit_game(game);
 	return (0);

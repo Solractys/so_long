@@ -11,22 +11,41 @@
 /* ************************************************************************** */
 
 #include "../../includes/render.h"
+#include "../../includes/ft_printf/ft_printf.h"
+
+void	load_player_images(t_game *game)
+{
+	int	w;
+	int	h;
+
+	w = 32;
+	h = 32;
+	if (game->player_img[0] && game->player_img[1] && game->player_img[2]
+		&& game->player_img[3])
+		return ;
+	game->player_img[0] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/player/up/PLAYER_U1.xpm", &w, &h);
+	game->player_img[1] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/player/down/PLAYER_D1.xpm", &w, &h);
+	game->player_img[2] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/player/left/PLAYER_L1.xpm", &w, &h);
+	game->player_img[3] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/player/right/PLAYER_R1.xpm", &w, &h);
+}
 
 void	load_images(t_game *game)
 {
-	int	width;
-	int	height;
+	int	w;
+	int	h;
 
-	width = 32;
-	height = 32;
-	game->wall_img = mlx_xpm_file_to_image(game->mlx, "src/assets/wall.xpm",
-			&width, &height);
-	game->floor_img = mlx_xpm_file_to_image(game->mlx, "src/assets/floor.xpm",
-			&width, &height);
-	game->player_img = mlx_xpm_file_to_image(game->mlx, "src/assets/player.xpm",
-			&width, &height);
-	game->exit_img = mlx_xpm_file_to_image(game->mlx, "src/assets/exit.xpm",
-			&width, &height);
+	w = 32;
+	h = 32;
+	game->wall_img = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/wall/wall.xpm", &w, &h);
+	game->floor_img = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/floor/floor.xpm", &w, &h);
+	game->exit_img = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/exit/exit.xpm", &w, &h);
 	game->collectible_img = mlx_xpm_file_to_image(game->mlx,
-			"src/assets/collectible.xpm", &width, &height);
+			"src/assets/collectible/collectible.xpm", &w, &h);
 }
