@@ -28,5 +28,6 @@ void	game_init(t_game *game, t_map *map);
 void	move_player(t_game *game, int dx, int dy);
 void	update_player_position(t_map *map, int new_x, int new_y);
 void	game_win(t_game *game);
+int		game_loop(t_game *game);
 
 #endif

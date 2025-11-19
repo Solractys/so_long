@@ -22,13 +22,17 @@ typedef struct s_game
 	void	*win;
 	t_map	*map;
 	void	*wall_img;
-	void	*floor_img;
-	void	*player_img[4];
+	void	*floor_img[6];
+	void	*player_img[4][6];
 	void	*exit_img[2];
 	int		exit_status;
-	void	*collectible_img;
+	void	*collectible_img[6];
 	int		player_direction;
 	int		moves;
+	int		grass_frame;
+	int		collectible_frame;
+	int		player_frame;
+	int		animation_timer;
 }	t_game;
 
 #endif
