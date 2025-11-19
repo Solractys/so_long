@@ -27,6 +27,7 @@ void	game_init(t_game *game, t_map *map)
 	game->player_img[1] = NULL;
 	game->player_img[2] = NULL;
 	game->player_img[3] = NULL;
+	game->exit_status = 0;
 	load_images(game);
 	load_player_images(game);
 	render_map(game);

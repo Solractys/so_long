@@ -47,16 +47,18 @@ void	move_player(t_game *game, int dx, int dy)
 
 	new_y = game->map->player_y + dy;
 	new_x = game->map->player_x + dx;
+	if (game->map->collectibles == 0)
+		game->exit_status = 1;
 	if (is_move_valid(game->map, new_x, new_y))
 	{
+		game->moves++;
+		ft_printf("Moves: %d\n", game->moves);
 		if (is_move_valid(game->map, new_x, new_y) == 2)
 		{
 			game_win(game);
 			return ;
 		}
 		update_player_position(game->map, new_x, new_y);
-		game->moves++;
-		ft_printf("Moves: %d\n", game->moves);
 		render_map(game);
 	}
 }

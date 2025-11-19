@@ -41,11 +41,13 @@ void	load_images(t_game *game)
 	w = 32;
 	h = 32;
 	game->wall_img = mlx_xpm_file_to_image(game->mlx,
-			"src/assets/wall/wall.xpm", &w, &h);
+			"src/assets/wall/WALL.xpm", &w, &h);
 	game->floor_img = mlx_xpm_file_to_image(game->mlx,
-			"src/assets/floor/floor.xpm", &w, &h);
-	game->exit_img = mlx_xpm_file_to_image(game->mlx,
-			"src/assets/exit/exit.xpm", &w, &h);
+			"src/assets/floor/GRASS_1.xpm", &w, &h);
+	game->exit_img[0] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/exit/EXIT.xpm", &w, &h);
+	game->exit_img[1] = mlx_xpm_file_to_image(game->mlx,
+			"src/assets/exit/EXIT_OPEN.xpm", &w, &h);
 	game->collectible_img = mlx_xpm_file_to_image(game->mlx,
-			"src/assets/collectible/collectible.xpm", &w, &h);
+			"src/assets/collectible/COLLECTIBLE_1.xpm", &w, &h);
 }

@@ -24,7 +24,10 @@ void	draw_tile(t_game *game, void *win, int x, int y)
 			game->player_img[game->player_direction], x, y);
 	}
 	else if (game->map->map[y / 32][x / 32] == 'E')
-		mlx_put_image_to_window(game->mlx, win, game->exit_img, x, y);
+	{
+		mlx_put_image_to_window(game->mlx, win,
+			game->exit_img[game->exit_status], x, y);
+	}
 	else if (game->map->map[y / 32][x / 32] == 'C')
 	{
 		mlx_put_image_to_window(game->mlx, win,
