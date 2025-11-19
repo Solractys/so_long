@@ -14,6 +14,7 @@
 #include "../../includes/so_long.h"
 #include "../../includes/map.h"
 #include "../../includes/render.h"
+#include "../../includes/ft_printf/ft_printf.h"
 
 int	is_move_valid(t_map *map, int x, int y)
 {
@@ -55,6 +56,7 @@ void	move_player(t_game *game, int dx, int dy)
 		}
 		update_player_position(game->map, new_x, new_y);
 		game->moves++;
+		ft_printf("Moves: %d\n", game->moves);
 		render_map(game);
 	}
 }
