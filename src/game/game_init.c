@@ -14,9 +14,11 @@
 #include "../../includes/map.h"
 #include "../../includes/game.h"
 #include "../../includes/render.h"
+#include "../../includes/intro.h"
 
 void	game_init(t_game *game, t_map *map)
 {
+	intro_animation();
 	game->map = map;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, map->width * 32, map->height * 32,
