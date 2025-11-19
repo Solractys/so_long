@@ -27,8 +27,6 @@ typedef struct s_map
 	int		exit_x;
 	int		exit_y;
 	int		collectibles;
-	int		walls;
-	int		spaces;
 }	t_map;
 
 t_map	*read_map(char *filename);

@@ -47,16 +47,18 @@ void	move_player(t_game *game, int dx, int dy)
 
 	new_y = game->map->player_y + dy;
 	new_x = game->map->player_x + dx;
+	if (game->map->collectibles == 0)
+		game->exit_status = 1;
 	if (is_move_valid(game->map, new_x, new_y))
 	{
+		game->moves++;
+		ft_printf("Moves: %d\n", game->moves);
 		if (is_move_valid(game->map, new_x, new_y) == 2)
 		{
 			game_win(game);
 			return ;
 		}
 		update_player_position(game->map, new_x, new_y);
-		game->moves++;
-		ft_printf("Moves: %d\n", game->moves);
 		render_map(game);
 	}
 }
@@ -64,13 +66,25 @@ void	move_player(t_game *game, int dx, int dy)
 int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
+	{
+		game->player_direction = 0;
 		move_player(game, 0, -1);
-	else if (keycode == KEY_A)
-		move_player(game, -1, 0);
+	}
 	else if (keycode == KEY_S)
+	{
+		game->player_direction = 1;
 		move_player(game, 0, 1);
+	}
+	else if (keycode == KEY_A)
+	{
+		game->player_direction = 2;
+		move_player(game, -1, 0);
+	}
 	else if (keycode == KEY_D)
+	{
+		game->player_direction = 3;
 		move_player(game, 1, 0);
+	}
 	else if (keycode == KEY_ESC)
 		exit_game(game);
 	return (0);

@@ -19,7 +19,6 @@ void	render_map(t_game *game)
 	int	y;
 
 	y = 0;
-	load_images(game);
 	while (y < game->map->height * 32)
 	{
 		x = 0;

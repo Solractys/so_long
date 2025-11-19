@@ -23,9 +23,11 @@ typedef struct s_game
 	t_map	*map;
 	void	*wall_img;
 	void	*floor_img;
-	void	*player_img;
-	void	*exit_img;
+	void	*player_img[4];
+	void	*exit_img[2];
+	int		exit_status;
 	void	*collectible_img;
+	int		player_direction;
 	int		moves;
 }	t_game;
 

@@ -13,16 +13,48 @@
 #include "../../includes/so_long.h"
 #include "../../includes/render.h"
 
+static void	destroy_player_images(t_game *game)
+{
+	int	i;
+
+	if (game->player_img[0])
+	{
+		i = 0;
+		while (i < 4)
+		{
+			if (game->player_img[i])
+				mlx_destroy_image(game->mlx, game->player_img[i]);
+			i++;
+		}
+	}
+}
+
+static void	destroy_exit_images(t_game *game)
+{
+	int	i;
+
+	if (game->exit_img[0])
+	{
+		i = 0;
+		while (i < 2)
+		{
+			if (game->exit_img[i])
+				mlx_destroy_image(game->mlx, game->exit_img[i]);
+			i++;
+		}
+	}
+}
+
 void	destroy_images(t_game *game)
 {
 	if (game->wall_img)
 		mlx_destroy_image(game->mlx, game->wall_img);
 	if (game->floor_img)
 		mlx_destroy_image(game->mlx, game->floor_img);
-	if (game->player_img)
-		mlx_destroy_image(game->mlx, game->player_img);
-	if (game->exit_img)
-		mlx_destroy_image(game->mlx, game->exit_img);
+	if (game->player_img[0])
+		destroy_player_images(game);
+	if (game->exit_img[0])
+		destroy_exit_images(game);
 	if (game->collectible_img)
 		mlx_destroy_image(game->mlx, game->collectible_img);
 }
