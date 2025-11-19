@@ -47,6 +47,5 @@ Progresso:
 [X] Hook para ESC
 [X] Função de cleanup geral
 
-[ ] Função de erro
-[ ] Norminette
-[ ] Testar mapas válidos e inválidos
+[X] Norminette
+[X] Testar mapas válidos e inválidos
