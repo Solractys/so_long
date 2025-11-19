@@ -45,7 +45,7 @@ static int	validate_args(int argc, char **argv)
 	return (1);
 }
 
-static t_map	*load_map(const char *filepath)
+static t_map	*load_map(char *filepath)
 {
 	t_map	*map;
 
