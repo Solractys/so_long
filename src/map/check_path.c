@@ -1,17 +1,18 @@
-#include "../includes/map.h"
-#include "../includes/ft_printf/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/18 22:58:25 by csilva-s          #+#    #+#             */
+/*   Updated: 2025/11/18 22:58:30 by csilva-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	show_map(t_map *map)
-{
-	int	i;
+#include "../../includes/map.h"
+#include "../../includes/ft_printf/ft_printf.h"
 
-	i = 0;
-	while (i < map->height)
-	{
-		ft_printf("%s\n", map->map[i]);
-		i++;
-	}
-}
 void	dfs(t_map *map, int x, int y)
 {
 	if (x < 0 || x >= map->height || y < 0 || y >= map->width)
@@ -24,10 +25,11 @@ void	dfs(t_map *map, int x, int y)
 	dfs(map, x, y + 1);
 	dfs(map, x, y - 1);
 }
-char **copy_map(t_map *map)
+
+char	**copy_map(t_map *map)
 {
-	int i;
-	char **map_copy;
+	int		i;
+	char	**map_copy;
 
 	map_copy = (char **)ft_calloc(map->height + 1, sizeof(char *));
 	if (!map_copy)
@@ -48,32 +50,46 @@ char **copy_map(t_map *map)
 	return (map_copy);
 }
 
-int is_valid_path(t_map *map)
+static int	init_copy_struct(t_map *map, t_map **map_copy)
 {
-	t_map *map_copy;
-	int colectibles_found;
-	int exit_found;
-
-	exit_found = 0;
-	map_copy = (t_map *)ft_calloc(1, sizeof(t_map));
-	if (!map_copy)
+	*map_copy = (t_map *)ft_calloc(1, sizeof(t_map));
+	if (!*map_copy)
+		return (0);
+	(*map_copy)->map = copy_map(map);
+	if (!(*map_copy)->map)
 	{
-		free_map(map_copy);
+		free(*map_copy);
 		return (0);
 	}
-	map_copy->map = copy_map(map);
-	if (!map_copy)
-		return (0);
-	map_copy->height = map->height;
-	map_copy->width = map->width;
-	dfs(map_copy, map->player_x, map->player_y);
+	(*map_copy)->height = map->height;
+	(*map_copy)->width = map->width;
+	return (1);
+}
+
+static int	check_results(t_map *map, t_map *map_copy)
+{
+	int	collectibles_left;
+	int	exit_found;
+
+	exit_found = 0;
 	count_info_map(map_copy);
-	colectibles_found = map_copy->collectibles;
+	collectibles_left = map_copy->collectibles;
 	if (map_copy->map[map->exit_y][map->exit_x] == 'V')
 		exit_found = 1;
-	show_map(map_copy);
-	free_map(map_copy);
-	if (colectibles_found != 0 || exit_found == 0)
+	if (collectibles_left != 0 || exit_found == 0)
 		return (0);
 	return (1);
+}
+
+int	is_valid_path(t_map *map)
+{
+	t_map	*map_copy;
+	int		result;
+
+	if (!init_copy_struct(map, &map_copy))
+		return (0);
+	dfs(map_copy, map->player_x, map->player_y);
+	result = check_results(map, map_copy);
+	free_map(map_copy);
+	return (result);
 }

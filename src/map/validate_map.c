@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/18 23:11:41 by csilva-s          #+#    #+#             */
+/*   Updated: 2025/11/18 23:11:41 by csilva-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/map.h"
 #include "../includes/ft_printf/ft_printf.h"
 
@@ -14,35 +26,6 @@ static void	print_line_lengths(t_map *map)
 		y++;
 	}
 	ft_printf("Expected width=%d, height=%d\n", map->width, map->height);
-}
-
-static void	print_wall_errors(t_map *map)
-{
-	int		x;
-	int		y;
-
-	x = 0;
-	while (x < map->width)
-	{
-		if (map->map[0][x] != '1')
-			ft_printf("Top border at x=%d is '%c'\n",
-				x, map->map[0][x]);
-		if (map->map[map->height - 1][x] != '1')
-			ft_printf("Bottom border at x=%d is '%c'\n",
-				x, map->map[map->height - 1][x]);
-		x++;
-	}
-	y = 0;
-	while (y < map->height)
-	{
-		if (map->map[y][0] != '1')
-			ft_printf("Left border at y=%d is '%c'\n",
-				y, map->map[y][0]);
-		if (map->map[y][map->width - 1] != '1')
-			ft_printf("Right border at y=%d is '%c'\n",
-				y, map->map[y][map->width - 1]);
-		y++;
-	}
 }
 
 int	validate_map_characters(t_map *map)
