@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 23:11:41 by csilva-s          #+#    #+#             */
-/*   Updated: 2025/11/18 23:11:41 by csilva-s         ###   ########.fr       */
+/*   Updated: 2025/11/30 15:31:39 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int	validate_map_walls(t_map *map)
 
 int	validate_map(t_map *map)
 {
+	if (!count_info_map(map))
+	{
+		ft_printf("Validation failed: invalid number of elements\n");
+		return (0);
+	}
 	if (!validate_map_characters(map))
 	{
 		ft_printf("Validation failed: invalid characters\n");

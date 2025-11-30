@@ -33,7 +33,7 @@ t_map	*read_map(char *filename);
 void	print_wall_errors(t_map *map);
 void	clean_line(char *line);
 void	dfs(t_map *map, int x, int y);
-void	count_info_map(t_map *map);
+int		count_info_map(t_map *map);
 void	free_map(t_map *map);
 char	**copy_map(t_map *map);
 int		handle_line_count(char *buffer, ssize_t r, int *lines);
