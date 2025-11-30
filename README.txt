@@ -23,29 +23,30 @@ Sobre a mecanica do jogo:
 
 Progresso:
 
-[X] Validar extensão .ber
-[X] Verificar formato retangular
-[X] Validar caracteres permitidos
-[X] Contar P / E / C
-[X] Verificar paredes ao redor
-[X] Flood fill para checar caminhos
+[ ] Validar extensão .ber
+[ ] Verificar formato retangular
+[ ] Validar caracteres permitidos
+[ ] Contar P / E / C
+[ ] Verificar paredes ao redor
+[ ] Flood fill para checar caminhos
 
-[X] Criar t_game
-[X] Guardar posição inicial do player
+[ ] Criar t_game
+[ ] Guardar posição inicial do player
 
-[X] Iniciar MiniLibX
-[X] Criar janela
-[X] Carregar sprites
-[X] Renderizar mapa completo
+[ ] Iniciar MiniLibX
+[ ] Criar janela
+[ ] Carregar sprites
+[ ] Renderizar mapa completo
 
-[X] Implementar hook de teclado
-[X] Função de movimento do player
-[X] Atualizar mapa após cada movimento
-[X] Contador de movimentos
+[ ] Implementar hook de teclado
+[ ] Função de movimento do player
+[ ] Atualizar mapa após cada movimento
+[ ] Contador de movimentos
 
-[X] Detectar vitória
-[X] Hook para ESC
-[X] Função de cleanup geral
+[ ] Detectar vitória
+[ ] Hook para ESC
+[ ] Função de cleanup geral
 
-[X] Norminette
-[X] Testar mapas válidos e inválidos
+[ ] Função de erro
+[ ] Norminette
+[ ] Testar mapas válidos e inválidos
