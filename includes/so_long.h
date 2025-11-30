@@ -15,6 +15,7 @@
 
 # include "mlx.h"
 # include "map.h"
+# include <sys/time.h>
 
 typedef struct s_game
 {
@@ -32,7 +33,7 @@ typedef struct s_game
 	int		grass_frame;
 	int		collectible_frame;
 	int		player_frame;
-	int		animation_timer;
+	long	last_frame_time;
 }	t_game;
 
 #endif

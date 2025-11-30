@@ -15,6 +15,7 @@
 #include "../../includes/game.h"
 #include "../../includes/render.h"
 #include "../../includes/intro.h"
+#include <sys/time.h>
 
 void	game_init(t_game *game, t_map *map)
 {
@@ -50,7 +51,7 @@ void	game_init(t_game *game, t_map *map)
 	game->grass_frame = 0;
 	game->collectible_frame = 0;
 	game->player_frame = 0;
-	game->animation_timer = 0;
+	game->last_frame_time = 0;
 	game->exit_status = 0;
 	load_images(game);
 	load_player_images(game);
