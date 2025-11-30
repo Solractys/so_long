@@ -11,6 +11,15 @@
 /* ************************************************************************** */
 
 #include "../../includes/intro.h"
+#include <sys/time.h>
+
+static long	get_time_ms(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
 
 void	load_intro_frames(t_intro *intro)
 {
@@ -49,16 +58,20 @@ void	loop_frame(t_intro *intro)
 
 int	play_intro_frame(void *param)
 {
-	int		delay;
-	t_intro	*intro;
+	long		delay;
+	long		current_time;
+	long		elapsed_time;
+	t_intro		*intro;
 
 	intro = (t_intro *)param;
-	delay = 4000;
+	delay = 600;
 	if (intro->frame_index == 0)
-		delay = 10000;
-	if (intro->timer++ < delay)
+		delay = 1500;
+	current_time = get_time_ms();
+	elapsed_time = current_time - intro->last_frame_time;
+	if (elapsed_time < delay)
 		return (0);
-	intro->timer = 0;
+	intro->last_frame_time = current_time;
 	mlx_clear_window(intro->mlx, intro->win);
 	mlx_put_image_to_window(intro->mlx, intro->win,
 		intro->frames[intro->frame_index],
@@ -76,6 +89,7 @@ void	intro_animation(void)
 	intro.win = mlx_new_window(intro.mlx,
 			400, 300, "The Legend of Zelda: So Long But So Nice");
 	intro.frame_index = 0;
+	intro.last_frame_time = get_time_ms();
 	load_intro_frames(&intro);
 	mlx_loop_hook(intro.mlx, play_intro_frame, &intro);
 	mlx_loop(intro.mlx);

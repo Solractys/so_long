@@ -22,7 +22,7 @@ typedef struct s_intro
 	void	*mlx;
 	void	*win;
 	int		frame_index;
-	int		timer;
+	long	last_frame_time;
 }	t_intro;
 
 void	intro_animation(void);
